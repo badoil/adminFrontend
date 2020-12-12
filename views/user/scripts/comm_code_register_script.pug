@@ -1,0 +1,132 @@
+script.
+    document.getElementById('dets-regist-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const cmnCode = {'admin_idx': 1}
+
+        const codeId = document.querySelector('#code-id').value
+        const codeName = document.querySelector('#code-name').value
+        const codeExplan = document.querySelector('#code-explan').value
+        const codeUsed = document.querySelector('#code-used').value
+
+        if(codeId){
+            cmnCode.cmn_code_id = codeId
+        }
+        if(codeName){
+            cmnCode.cmn_code_name = codeName
+        }
+        if(codeExplan){
+            cmnCode.cmn_code_explan = codeExplan
+        }
+        if(codeUsed){
+            cmnCode.cmn_code_used = codeUsed
+        }
+
+        const data = document.querySelectorAll('#text')
+
+        let dets = []
+        let values = []
+        
+        for(let k=0; k<data.length; k++){
+            values.push(data[k].value)
+            
+            let objectItem = new Object()
+            if(k % 4 === 0){
+                objectItem.code_dets_num = data[k+2].value
+                objectItem.code_dets_name = data[k+3].value
+                objectItem.used_or_not = "Y"
+
+                dets.push(objectItem)
+            }
+        }            
+        console.log('values:', values)
+        console.log('dets:', dets)
+    
+        cmnCode.dets = dets
+
+        console.log('cmnCode:',cmnCode)
+
+        const xhr = new XMLHttpRequest();
+        xhr.onload = function() {
+            if(xhr.status === 201) {
+                console.log(xhr.responseText)
+            }else{
+                console.error(xhr.responseText)
+            }
+        }
+        xhr.open('POST', 'https://onnuri-admin-backend.team-everywhere.com/api/v2/cmn_code')
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify(cmnCode))
+
+        for(let k=0; k<data.length; k++){
+            data[k].value = ""
+        }
+
+        document.querySelector('#code-id').value = ""
+        document.querySelector('#code-name').value = ""
+        document.querySelector('#code-explan').value = ""
+        document.querySelector('#code-used').value = ""
+
+    })
+
+    function addRow() {
+        let tbody = document.querySelector('#code-dets-regist tbody')
+        //tbody.innerHTML = '';
+
+        let row = document.createElement('tr')
+        let td = document.createElement('td');
+        td.innerHTML = '';
+
+        let inputText = document.createElement('input')
+        inputText.setAttribute("type", "text")
+        inputText.setAttribute("id", "text")
+        let inputCheckbox = document.createElement('input')
+        inputCheckbox.type = 'checkbox'
+        inputCheckbox.id = 'checkbox'
+
+        td.appendChild(inputCheckbox)
+        row.appendChild(td);
+
+        for(let k=0; k<4; k++){
+            let inputText = document.createElement('input')
+            inputText.setAttribute("type", "text")
+            inputText.setAttribute("id", "text")
+
+            td = document.createElement('td');
+            td.appendChild(inputText)
+            row.appendChild(td);
+        }
+
+        tbody.appendChild(row)
+
+    }
+
+    function delRow() {
+        const table = document.getElementById('code-dets-regist')
+        for(let k=0; k<table.rows.length; k++){
+            let checkBox = table.rows[k].cells[0].childNodes[0].checked;
+            if(checkBox){
+                table.deleteRow(k)
+                k--;
+            }
+        }
+    }
+
+
+    window.onload = function() {
+        const el = document.getElementById('addRowBtn')
+        if(el){
+            el.addEventListener('click', function() {
+            addRow();
+            })
+        }
+
+        const ell = document.getElementById('delRowBtn')
+        if(ell){
+            ell.addEventListener('click', function() {
+            delRow();
+            })
+        }
+    }
+
+    

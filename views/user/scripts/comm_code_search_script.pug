@@ -1,0 +1,129 @@
+script.
+    
+    function getUser(){    
+        const xhr = new XMLHttpRequest();
+
+        let inputValue = document.getElementById("input").value
+        let selectOption = document.getElementById("code-select")
+        selectOption = selectOption.options[selectOption.selectedIndex].value
+        console.log('selectOption:', selectOption)
+        console.log('inputValue:', inputValue)
+
+        let query
+        if(inputValue){
+            selectOption === 'cmn_code_id'? query = `?cmn_code_id=${inputValue}` : query = `?cmn_code_name=${inputValue}`
+        }else{
+            query = ""
+        }
+
+        xhr.onload = function() {
+            if(xhr.status === 200){
+                let cmnCodes = JSON.parse(xhr.responseText)
+                console.log('users:', cmnCodes)
+                let tbody = document.querySelector('#code-list tbody')
+                tbody.innerHTML = '';
+                cmnCodes.result.map(function(code, index) {
+                    let row = document.createElement('tr');
+                    row.setAttribute("id", `${index}`)
+                    //console.log('row:', row)
+
+                    row.addEventListener('click', function(){
+                        getUserDetail(code.cmn_code_id);
+                        
+                        row.style.backgroundColor = "#eeeded"
+                        console.log('row.id:', row.id)
+                        for(let i=0; i<cmnCodes.result.length; i++){
+                            let newRow = document.getElementById(`${i}`)
+                            if(newRow.id !== row.id){
+                                newRow.style.backgroundColor = ""
+                            }
+                        }
+                    })
+
+                    let td = document.createElement('td')
+                    td.textContent = code.cmn_code_id;
+                    row.appendChild(td);
+
+                    td = document.createElement('td')
+                    td.textContent = code.cmn_code_name;
+                    row.appendChild(td);
+
+                    td = document.createElement('td')
+                    td.textContent = code.cmn_code_explan;
+                    row.appendChild(td);
+
+                    td = document.createElement('td')
+                    td.textContent = code.cmn_code_used;
+                    row.appendChild(td);
+
+                    tbody.appendChild(row);
+                })
+                console.log('tbody:', tbody)
+            } else {
+                console.error(xhr.responseText);
+            }
+        }
+        console.log('query:', query)
+        xhr.open('GET', `https://onnuri-admin-backend.team-everywhere.com/api/v2/cmn_code${query}`)
+        xhr.send();
+    }
+    
+    function getUserDetail(id){
+        const xhr = new XMLHttpRequest();
+        xhr.onload = function() {
+            if(xhr.status === 200){
+                let cmnCodeDets = JSON.parse(xhr.responseText);
+                let tbody = document.querySelector('#code-detail-list tbody')
+                tbody.innerHTML = '';
+
+                const cmn_code_name = cmnCodeDets[0].cmn_code_name
+                cmnCodeDets[0].dets.map(function(code) {
+                    let row = document.createElement('tr')
+                    let td = document.createElement('td');
+                    td.textContent = code.cmn_code_dets_idx
+                    row.appendChild(td);
+
+                    td = document.createElement('td');
+                    td.textContent = code.cmn_code_id
+                    row.appendChild(td);
+
+                    td = document.createElement('td');
+                    td.textContent = cmn_code_name
+                    row.appendChild(td);
+
+                    td = document.createElement('td');
+                    td.textContent = code.code_dets_num
+                    row.appendChild(td);
+
+                    td = document.createElement('td');
+                    td.textContent = code.code_dets_name
+                    row.appendChild(td);
+
+                    tbody.appendChild(row);
+                })
+
+            }else {
+                console.error(xhr.responseText);
+            }
+
+        }
+        xhr.open('GET', 
+            `https://onnuri-admin-backend.team-everywhere.com/api/v2/cmn_code/detail/${id}`)
+        xhr.send();
+    }
+
+    window.onload = function() {
+        const el = document.getElementById('search-btn')
+        //let inputValue = document.getElementById("input").value
+
+        if(el){
+            el.addEventListener('click', function() {
+                getUser();
+            })
+        }
+        //- else if(el && inputValue){
+        //-     el.addEventListener('click', function() {
+        //-         getUserDetail();
+        //-     })
+        //- }
+    }

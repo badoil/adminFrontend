@@ -1,0 +1,24 @@
+form(role='form')
+    table#code-list(class='table form-table table-bordered')
+        thead
+            tr
+                td(colspan='4')
+                    div(class='row')          
+                        label(class='col-form-label ml-2 mr-3') 검색구분                  
+                        div(class='col-sm-10')
+                            div(class='form-group input-group')
+                                form#user-search
+                                    select(id="code-select", class='form-control col-2 mr-2')
+                                        option(value="whole") 전체
+                                        option(value="cmn_code_id") 공통코드아이디
+                                        option(value="cmn_code_name") 공통코드이름
+                                    input(id="input", type='search', class='form-control col-8 mr-2')
+                                    button(type='button', id='search-btn',class='btn btn-primary btn-lg ') 검색
+        thead(class='thead-color')
+            tr
+                th 공통코드 아이디
+                th 공통코드 이름
+                th 공통코드 설명
+                th 공통코드 사용처
+        tbody
+            

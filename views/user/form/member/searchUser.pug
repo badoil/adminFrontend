@@ -1,0 +1,266 @@
+form(role='form')
+    table(class='table form-table')
+        tbody
+            tr
+                th 개인정보
+                td(colspan='3')
+                    div(class='row')
+                        div(class='col-sm-2')
+                            div(class='form-group input-group')
+                                select(class='form-control')
+                                    option 전체
+                        div(class='col-sm-4')
+                            div(class='form-group input-group')
+                                    input(type='search', class='form-control')
+                
+            tr
+                th 회원상태
+                td(colspan='3')
+                    div(class='row')
+                        div(class='col-sm-2')
+                            div(class='form-group input-group')
+                                select(class='form-control')
+                                    option 활동
+            tr
+                th 가입일
+                td(colspan='3')
+                    div(class='row')
+                        div(class='col-sm-6')                    
+                            div(class='form-group input-group')                                    
+                                input(type='text', class='form-control float-right', name='full-range-picker')
+                                div(class='input-group-append')
+                                    span(class='input-group-text')
+                                        i(class='far fa-calendar')
+                        div(class='col-sm-6') 
+                            div(class='btn-group btn-group-toggle btn-block', data-toggle='buttons')
+                                label(class='btn btn-outline-secondary btn-lg')
+                                    input(type='radio', name='options', id='option1', autocomplete='off', checked=true)
+                                    span 어제
+                                label(class='btn btn-outline-secondary btn-lg')
+                                    input(type='radio', name='options', id='option2', autocomplete='off')
+                                    span 오늘
+                                label(class='btn btn-outline-secondary btn-lg')
+                                    input(type='radio', name='options', id='option1', autocomplete='off')
+                                    span 1주일
+                                label(class='btn btn-outline-secondary btn-lg')
+                                    input(type='radio', name='options', id='option2', autocomplete='off')
+                                    span 1개월
+                                label(class='btn btn-outline-secondary btn-lg')
+                                    input(type='radio', name='options', id='option1', autocomplete='off')
+                                    span 3개월
+                                label(class='btn btn-outline-secondary btn-lg')
+                                    input(type='radio', name='options', id='option2', autocomplete='off')
+                                    span 전체 
+            tr
+                th 접속일
+                td(colspan='3')
+                    div(class='row')   
+                        div(class='col-sm-6')                 
+                            div(class='form-group input-group')                                    
+                                input(type='text', class='form-control float-right', name='full-range-picker')
+                                div(class='input-group-append')
+                                    span(class='input-group-text')
+                                        i(class='far fa-calendar')
+                        div(class='col-sm-6')
+                            div(class='btn-group btn-group-toggle btn-block', data-toggle='buttons')
+                                label(class='btn btn-outline-secondary btn-lg')
+                                    input(type='radio', name='options', id='option1', autocomplete='off', checked=true)
+                                    span 어제
+                                label(class='btn btn-outline-secondary btn-lg')
+                                    input(type='radio', name='options', id='option2', autocomplete='off')
+                                    span 오늘
+                                label(class='btn btn-outline-secondary btn-lg')
+                                    input(type='radio', name='options', id='option1', autocomplete='off')
+                                    span 1주일
+                                label(class='btn btn-outline-secondary btn-lg')
+                                    input(type='radio', name='options', id='option2', autocomplete='off')
+                                    span 1개월
+                                label(class='btn btn-outline-secondary btn-lg')
+                                    input(type='radio', name='options', id='option1', autocomplete='off')
+                                    span 3개월
+                                label(class='btn btn-outline-secondary btn-lg')
+                                    input(type='radio', name='options', id='option2', autocomplete='off')
+                                    span 전체
+            tr 
+                th 접속횟수
+                td(colspan='3')
+                    div(class='row')
+                        div(class='col-sm-3')
+                            div(class='form-group input-group')
+                                input(type='search', class='form-control')
+                                span(class='m-1') 이상 ~
+                        div(class='col-sm-3')
+                            div(class='form-group input-group')
+                                input(type='search', class='form-control')
+                                span(class='m-1') 이하
+                th
+                td
+            tr 
+                th 나이
+                td(colspan='3')
+                    div(class='row')
+                        div(class='col-sm-3')
+                            div(class='form-group input-group')
+                                input(type='search', class='form-control')
+                                span(class='m-1') 이상 ~
+                        div(class='col-sm-3')
+                            div(class='form-group input-group')
+                                input(type='search', class='form-control')
+                                span(class='m-1') 이하
+            tr
+                th 성별
+                td(colspan='3')
+                    div(class='row')
+                        div(class='col-sm-2')
+                            div(class='form-group input-group')
+                                select(class='form-control')
+                                    option 전체
+            tr 
+                th 포인트
+                td(colspan='3')
+                    div(class='row')
+                        div(class='col-sm-2')
+                            div(class='form-group input-group')
+                                select(class='form-control')
+                                    option 전체 
+                        div(class='col-sm-3')
+                            div(class='form-group input-group')
+                                input(type='search', class='form-control')
+                                span(class='m-1') 이상 ~
+                        div(class='col-sm-3')
+                            div(class='form-group input-group')
+                                input(type='search', class='form-control')
+                                span(class='m-1') 이하
+                        div(class='col-sm-3')
+                            div(class='form-group input-group')
+                                select(class='form-control')
+                                    option 회원별 상세조회         
+
+            tr 
+                th 금액/건수
+                td(colspan='3')
+                    div(class='row')
+                        div(class='col-sm-2')
+                            div(class='form-group input-group')
+                                select(class='form-control')
+                                    option 전체
+                        div(class='col-sm-3')
+                            div(class='form-group input-group')
+                                input(type='search', class='form-control')
+                                span(class='m-1') 이상 ~
+                        div(class='col-sm-3')
+                            div(class='form-group input-group')
+                                input(type='search', class='form-control')
+                                span(class='m-1') 이하
+            tr 
+                th 주문일/결제완료일
+                td(colspan='3')
+                    div(class='row')
+                        div(class='col-sm-2')
+                            div(class='form-group input-group')
+                                select(class='form-control')
+                                    option 전체
+                        div(class='col-sm-6')
+                            div(class='form-group input-group')                                    
+                                input(type='text', class='form-control float-right', name='full-range-picker')
+                                div(class='input-group-append')
+                                    span(class='input-group-text')
+                                        i(class='far fa-calendar')
+            tr 
+                th 주문상품
+                td(colspan='3')
+                    div(class='row')
+                        div(class='col-sm-3') 
+                            div(class='form-group input-group')
+                                input(type='search', class='form-control')
+                        div(class='col-sm-2')
+                            div(class='form-group input-group')
+                                select(class='form-control')
+                                    option 상품검색 
+            tr 
+                th SMS 및 애프터케어 수신
+                td(colspan='3')
+                    div(class='form-inline')
+                        div(class='form-inline col-sm-6')
+                            div(class='form-check mr-2')
+                                input(type='radio', class='form-check-input', name='sms')
+                                label 전체
+                            div(class='form-check ml-1 mr-2')
+                                input(type='radio', class='form-check-input', name='sms')
+                                label 수신허용
+                            div(class='form-check ml-1')
+                                input(type='radio', class='form-check-input', name='sms')
+                                label 수신안함
+                        div(class='form-inline col-sm-6')
+                            span(class='col-form-label') 이메일 수신
+                            div(class='form-inline ml-4')
+                                div(class='form-check mr-1')
+                                    input(type='radio', class='form-check-input', name='email')
+                                    label 전체
+                                div(class='form-check ml-1 mr-1')
+                                    input(type='radio', class='form-check-input', name='email')
+                                    label 수신허용
+                                div(class='form-check ml-1')
+                                    input(type='radio', class='form-check-input', name='email')
+                                    label 수신안함
+            tr 
+                th 휴면해제일
+                td(colspan='3')
+                    div(class='row')      
+                        div(class='col-sm-6')              
+                            div(class='form-group input-group')                                    
+                                input(type='text', class='form-control float-right', name='full-range-picker')
+                                div(class='input-group-append')
+                                    span(class='input-group-text')
+                                        i(class='far fa-calendar')
+                        div(class='col-sm-6')
+                            div(class='btn-group btn-group-toggle btn-block', data-toggle='buttons')
+                                label(class='btn btn-outline-secondary btn-lg')
+                                    input(type='radio', name='options', id='option1', autocomplete='off', checked=true)
+                                    span 어제
+                                label(class='btn btn-outline-secondary btn-lg')
+                                    input(type='radio', name='options', id='option2', autocomplete='off')
+                                    span 오늘
+                                label(class='btn btn-outline-secondary btn-lg')
+                                    input(type='radio', name='options', id='option1', autocomplete='off')
+                                    span 1주일
+                                label(class='btn btn-outline-secondary btn-lg')
+                                    input(type='radio', name='options', id='option2', autocomplete='off')
+                                    span 1개월
+                                label(class='btn btn-outline-secondary btn-lg')
+                                    input(type='radio', name='options', id='option1', autocomplete='off')
+                                    span 3개월
+                                label(class='btn btn-outline-secondary btn-lg')
+                                    input(type='radio', name='options', id='option2', autocomplete='off')
+                                    span 전체
+            tr 
+                th 특별관리
+                td(colspan='3')
+                    div(class='form-inline')
+                        div(class='form-inline col-sm-6')
+                            div(class='form-check mr-2')
+                                input(type='radio', class='form-check-input', name='special-care')
+                                label 대상회원만 조회
+                            div(class='form-check ml-1')
+                                input(type='radio', class='form-check-input', name='special-care')
+                                label 대상회원 제외
+                        div(class='form-inline col-sm-6')
+                            span(class='col-form-label') 소셜계정연동 
+                            div(class='form-inline ml-3') 
+                                div(class="form-check mr-1")
+                                    input(type='checkbox', class='form-check-input')
+                                    label 전체
+                                div(class="form-check mr-1 ml-1")
+                                    input(type='checkbox', class='form-check-input')
+                                    label 네이버
+                                div(class="form-check mr-1 ml-1")
+                                    input(type='checkbox', class='form-check-input')
+                                    label 카카오톡
+                                div(class="form-check ml-1")
+                                    input(type='checkbox', class='form-check-input')
+                                    label 페이스북
+            tr
+                th(colspan='4')
+                    div(class='text-center')
+                        button(type='button', class='btn btn-primary', id='searchUsersBtn') 검색
+                        button(type='button', class='btn btn-default ml-2', id='resetBtn') 초기화

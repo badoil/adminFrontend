@@ -1,0 +1,108 @@
+script.
+
+    let dataTable
+    let tableColumnList = new Array()
+    let exposedColumnList = new Array()
+    let fixedColumnList = new Array()
+    let unFixedColumnList = new Array()
+
+    $(document).ready(async function(){
+        let exposed_count
+        let exposed_info = []
+        let fixed_column_count = 0
+        let columns = []
+
+        await utilGetDataByAPI('/user/setting/table',function(res){
+            console.log('res',res)
+
+            if(res){
+                exposed_count = res.exposed_count
+                exposed_info = res.exposed_info
+                fixed_column_count = res.fixed_column_count
+                tableColumnList = res.tableColumnResult.result
+                exposedColumnList = res.exposed_info
+            }
+
+            console.log("exposed_info:", exposed_info)
+            
+            //디폴트 컬럼 정의
+            columns.push({
+                searchable: false,
+                orderable: false,
+                render: function (data, type, full, meta) {
+                    return meta.row + meta.settings._iDisplayStart + 1
+                },
+            })
+
+            console.log('columns1:', columns)
+
+            const datatableHead = $('#dataTable1').find('thead').find('tr')
+            let html = '<th><div class="form-check d-inline"><input type="checkbox" class="form-check-input" /></div></th>'
+
+            for(let i = 0 ; i<exposed_info.length ; i++){
+                html += `<th>${exposed_info[i].tbl_culum}</th>`
+                let tempObject
+                if(exposed_info[i].tbl_param){
+                    tempObject = {
+                        data:exposed_info[i].tbl_param,
+                        searchable: false,
+                        orderable: false,
+                    }
+                }else{
+                    tempObject = {
+                        searchable: false,
+                        orderable: false,
+                        render: function (data, type, full, meta) {
+                            return ''
+                        },
+                    }
+                }
+                columns.push(tempObject)
+            }
+
+            console.log('column2:', columns)
+            console.log('html:', html)
+            
+            datatableHead.append(html)
+            dataTable = $('#dataTable1').DataTable({
+                "processing":true,
+                "serverSide":true,
+                "searching": true,
+                "autoWidth": false,
+                "info": true,
+                "paging": true,
+                "scrollX": true,
+                //- "scrollY": false,
+                "fixedColumns": {
+                    leftColumns: 2+fixed_column_count,
+                    heightMatch: "auto"
+                },
+                "lengthMenu": [ [ exposed_count?exposed_count:20 ], [ exposed_count?exposed_count:20 ] ],
+                "ajax":{
+                    "url":"/user/list/json",
+                    "type":"POST",
+                    "contentType":"application/json",
+                    "data": function(d){
+                        return JSON.stringify({"returnObj":d})
+                    }
+                },
+                columns:columns,
+                "language": {
+                    "emptyTable": "데이터가 존재하지 않습니다",
+                    "loadingRecords": "로딩 중 입니다",
+                    "processing": "잠시만 기다려 주세요",
+                    "lengthMenu": "페이지당 _MENU_ 개씩 보기",
+                    "info": "총 _TOTAL_개의 글",
+                    "infoEmpty" : "총 0개의 글",
+                    "infoFiltered": "(_MAX_개의 글 중)",
+                    "zeroRecords": "조회된 데이터가 없습니다",
+                    "paginate": {
+                        "first": "첫 페이지",
+                        "last": "마지막 페이지",
+                        "next": "다음",
+                        "previous": "이전"
+                    }
+                }
+            }).fixedColumns().relayout()
+        })
+    })

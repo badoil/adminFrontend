@@ -1,0 +1,354 @@
+extends ../layout
+
+block append content
+    include ./sidebar.pug
+
+    div(class='content-wrapper')    
+        include ../includes/content_header.pug
+
+        div(class='content')
+            div(class='container-fluid')
+                div(class='row')
+                    div(class='col-md-12')
+                        div(class='card card-secondary')
+                            div(class='card-header')
+                                h3(class='card-title') 조회
+                                div(class='card-tools')
+                                    button(type='button', class='btn btn-tool', data-card-widget='collapse', data-toggle='tooltip', title='Collapse')
+                                        i(class='fas fa-minus')
+                                //- .card-header   
+                            div(class='card-body scroll-container')
+                                include ./form/member/searchUser
+
+                        div(class='card text-center card-secondary')
+                            div(class='card-header')
+                                h3(class='card-title') 목록
+                                div(class='card-tools')
+                                    button(type='button', class='btn btn-tool', data-card-widget='collapse', data-toggle='tooltip', title='Collapse')
+                                        i(class='fas fa-minus')
+                                //- .card-header   
+                            div(class='card-body scroll-container')
+                                include ./form/member/usersList.pug
+                                
+
+    include ../includes/modal/memberDetail.pug
+    +modal('회원상세', 'settingUserModal', 'settingTableBtn', 'modal-lg')
+        div(class='container-fluid')
+            div(class='row')
+                div(class='col-sm-12')        
+                    table(class='table inner-table')
+                        tbody
+                            tr
+                                th 아이디
+                                td
+                                    div(class='form-row')
+                                        div(class='form-group input-group')
+                                            input(type='search', class='form-control col-5')
+                                th
+                                td
+                            tr
+                                th 회원코드
+                                td
+                                    div(class='form-row')
+                                        div(class='form-group input-group')
+                                            input(type='search', class='form-control col-5')
+                                th
+                                td
+                            tr
+                                th 특별관리대상
+                                td
+                                    div(class='form-check form-check-inline')
+                                        input(type='radio', class='form-check-input')
+                                        label(class='form-check-label') 지정
+                                    div(class='form-check form-check-inline')
+                                        input(type='radio', class='form-check-input')      
+                                        label(class='form-check-label') 제외
+                                        
+                                th
+                                td
+                            tr
+                                th 회원상태
+                                td
+                                    div(class='form-row')
+                                        input(type='search', class='form-control col-5', placeholder='활동')
+                                th 인증수단
+                                td 
+                                    div(class='form-row')
+                                        div(class='form-group input-group')
+                                            input(type='search', class='form-control col-6')
+                            tr
+                                th 이름
+                                td
+                                    div(class='form-row')
+                                        div(class='form-group input-group')
+                                            input(type='search', class='form-control col-5')
+                                th 성별
+                                td 
+                                    div(class='form-row')
+                                        div(class='form-group input-group')
+                                            input(type='search', class='form-control col-6')
+                            tr
+                                th 휴대번호
+                                td
+                                    div(class='form-row')
+                                        div(class='form-group input-group')
+                                            input(type='search', class='form-control')
+                                th 생년월일
+                                td
+                                    div(class='form-row')
+                                        div(class='form-group input-group')
+                                            input(type='search', class='form-control col-6')
+                                        div(class='form-check form-check-inline')
+                                            input(type='radio', class='form-check-input')
+                                            label(class='form-check-label') 양력
+                                        div(class='form-check form-check-inline')
+                                            input(type='radio', class='form-check-input')
+                                            label(class='form-check-label') 음력
+                            tr
+                                th 추천인 아이디
+                                td
+                                    div(class='form-row')
+                                        div(class='form-group input-group')
+                                            input(type='search', class='form-control col-5 mr-2')
+                                            button(class='btn btn-outline-secondary btn-sm') 추천인 목록확인 
+                                        span (추천받은 횟수: 20)
+                                th 개인통관부호
+                                td 
+                                    div(class='form-row')
+                                        div(class='form-group input-group')
+                                            input(type='search', class='form-control col-6')
+                            tr(rowspan='3')
+                                th 주소
+                                td
+                                    div(class='form-row')
+                                        div(class='form-group input-group')
+                                            input(type='search', class='form-control col-5 mr-2')
+                                            button(class='btn btn-outline-secondary btn-lg') 주소검색 
+
+                                    div(class='form-row')
+                                        div(class='form-group input-group')
+                                            input(type='search', class='form-control')
+                                    div(class='form-row')
+                                        div(class='form-group input-group')
+                                            input(type='search', class='form-control')  
+                                th 
+                                td 
+                            tr
+                                th SMS 및 애프터케어 수신
+                                td
+                                    div(class='form-check form-check-inline')
+                                        input(type='radio', class='form-check-input')
+                                        label(class='form-check-label') 수신
+                                    div(class='form-check form-check-inline')
+                                        input(type='radio', class='form-check-input')
+                                        label(class='form-check-label') 수신거부
+                                    div (수신동의일:
+                                th 메일수신
+                                td
+                                    div(class='form-check form-check-inline')
+                                        input(type='radio', class='form-check-input')
+                                        label(class='form-check-label') 수신
+                                    div(class='form-check form-check-inline')
+                                        input(type='radio', class='form-check-input')
+                                        label(class='form-check-label') 수신거부
+                                    div (수신동의일:
+                            tr
+                                th 개인정보수집 및 이용동의
+                                td
+                                    div(class='form-check form-check-inline')
+                                        input(type='radio', class='form-check-input')
+                                        label(class='form-check-label') 동의
+                                    div(class='form-check form-check-inline')
+                                        input(type='radio', class='form-check-input')
+                                        label(class='form-check-label') 동의안함
+                                th 3자 정보제공 동의
+                                td
+                                    div(class='form-check form-check-inline')
+                                        input(type='radio', class='form-check-input')
+                                        label(class='form-check-label') 동의
+                                    div(class='form-check form-check-inline')
+                                        input(type='radio', class='form-check-input')
+                                        label(class='form-check-label') 동의안함
+                            tr
+                                th 3자 정보제공 동의 현황
+                                td(colspan='3')
+                                    table(class='table table-bordered')                        
+                                        thead(class='thead-color')
+                                            tr                        
+                                                th(class='text-center', colspan='2') 제공서비스                      
+                                                th(class='text-center') 제공받는자
+                                                th(class='text-center') 보유기간
+                                                th(class='text-center') 동의여부
+                                                th(class='text-center') 일자
+                                        tbody
+                                            tr
+                                                td(colspan='6')
+                            tr
+                                th 총 충전포인트
+                                td
+                                    div(class='form-row')
+                                        div(class='form-group input-group')
+                                            input(type='search', class='form-control col-5')
+                                th
+                                td
+                            tr
+                                th 총 일반적립포인트
+                                td
+                                    div(class='form-row')
+                                        div(class='form-group input-group')
+                                            input(type='search', class='form-control col-5')
+                                th 총 특별적립포인트
+                                td
+                                    div(class='form-row')
+                                        div(class='form-group input-group')
+                                            input(type='search', class='form-control col-6')
+                            tr
+                                th 총 주문건수
+                                td
+                                    div(class='form-row')
+                                        div(class='form-group input-group')
+                                            input(type='search', class='form-control col-5')
+                                th 총 주문금액
+                                td
+                                    div(class='form-row')
+                                        div(class='form-group input-group')
+                                            input(type='search', class='form-control col-6')  
+                            tr
+                                th 총 실주문건수
+                                td
+                                    div(class='form-row')
+                                        div(class='form-group input-group')
+                                            input(type='search', class='form-control col-5')
+                                th 총 실결제금액
+                                td 
+                                    div(class='form-row')
+                                        div(class='form-group input-group')
+                                            input(type='search', class='form-control col-6')
+                            tr
+                                th 회원가입일
+                                td
+                                    div(class='form-row')
+                                        div(class='form-group input-group')
+                                            input(type='search', class='form-control col-5')
+                                th 최근접속일
+                                td 
+                                    div(class='form-row')
+                                        div(class='form-group input-group')
+                                            input(type='search', class='form-control col-6')
+                            tr
+                                th(rowspan='3', class='') 환불계좌 정보
+                                td
+                                    div(class='form-row')
+                                        label(class='col-form-label mr-3') 예금주
+                                        div(class='col-sm-8')
+                                            div(class='form-group input-group')
+                                                input(type='search', class='form-control')
+                                th 결혼여부
+                                td
+                                    div(class='form-row')
+                                        div(class='form-check form-check-inline')
+                                            input(type='radio', class='form-check-input')
+                                            label(class='form-check-label') 미혼
+                                        div(class='form-check form-check-inline')
+                                            input(type='radio', class='form-check-input')
+                                            label(class='form-check-label') 기혼
+                            tr
+                                td(class='border-0')
+                                    div(class='form-row')
+                                        label(class='col-form-label mr-3') 은행명 
+                                        div(class='col-sm-8')
+                                            div(class='form-group input-group')
+                                                input(type='search', class='form-control')
+                                th(class='border-0') 결혼기념일
+                                td(class='border-0')
+                                    div(class='form-row')
+                                        div(class='form-group input-group')
+                                            input(type='search', class='form-control col-6')
+                            tr
+                                td(class='border-0')
+                                    div(class='form-row')
+                                        label(class='col-form-label mr-1') 계좌번호
+                                        div(class='col-sm-8')
+                                            div(class='form-group input-group')
+                                                input(type='search', class='form-control')  
+                                th(class='border-0') 배우자생일
+                                td(class='border-0')
+                                    div(class='form-row')
+                                        div(class='form-group input-group')
+                                            input(type='search', class='form-control col-6')      
+                            tr
+                                th(rowspan='3') 간편결제계좌 정보
+                                td
+                                    div(class='form-row')
+                                        label(class='col-form-label mr-3') 예금주
+                                        div(class='col-sm-8')
+                                            div(class='form-group input-group')
+                                                input(type='search', class='form-control')
+                                th 자녀유무
+                                td
+                                    div(class='form-row')
+                                        div(class='form-check form-check-inline')
+                                            input(type='radio', class='form-check-input')
+                                            label(class='form-check-label') 있음
+                                        div(class='form-check form-check-inline')
+                                            input(type='radio', class='form-check-input')
+                                            label(class='form-check-label') 없음
+                            tr
+                                td(class='border-0')
+                                    div(class='form-row')
+                                        label(class='col-form-label mr-3') 은행명 
+                                        div(class='col-sm-8')
+                                            div(class='form-group input-group')
+                                                input(type='search', class='form-control')
+                                th(class='border-0') 직업
+                                td(class='border-0')
+                                    div(class='form-row')
+                                        div(class='form-group input-group')
+                                            select(class='form-control col-6')
+                            tr
+                                td(class='border-0')
+                                    div(class='form-row')
+                                        label(class='col-form-label mr-1') 계좌번호
+                                        div(class='col-sm-8')
+                                            div(class='form-group input-group')
+                                                input(type='search', class='form-control')  
+                                th(class='border-0') 최종학력
+                                td(class='border-0')  
+                                    div(class='form-row')
+                                        div(class='form-group input-group')
+                                            select(class='form-control col-6')
+                            tr
+                                th(rowspan='3') 충전계좌 정보
+                                td
+                                    div(class='form-row')
+                                        label(class='col-form-label mr-3') 예금주
+                                        div(class='col-sm-8')
+                                            div(class='form-group input-group')
+                                                input(type='search', class='form-control')
+                                th
+                                td
+                            tr
+                                td(class='border-0')
+                                    div(class='form-row')
+                                        label(class='col-form-label mr-3') 은행명 
+                                        div(class='col-sm-8')
+                                            div(class='form-group input-group')
+                                                input(type='search', class='form-control')
+                                th(class='border-0')
+                                td(class='border-0')
+                            tr
+                                td(class='border-0')
+                                    div(class='form-row')
+                                        label(class='col-form-label mr-1') 계좌번호
+                                        div(class='col-sm-8')
+                                            div(class='form-group input-group')
+                                                input(type='search', class='form-control')  
+                                th(class='border-0')
+                                td(class='border-0')
+                            tr
+                                td(colspan='4')
+                                    div(class='text-center')
+                                        button(type='button', class='btn btn-primary btn-lg ') 수정       
+
+append scripts
+    include ./scripts/user_list_script.pug 

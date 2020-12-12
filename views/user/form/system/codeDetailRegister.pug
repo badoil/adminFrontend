@@ -1,0 +1,32 @@
+form#dets-regist-form(role='form')    
+    table#code-dets-regist(class='table form-table table-bordered')
+        thead
+            tr
+                td(colspan='5' class='align-middle')
+                    div(class='row float-right')
+                        div(class='form-group input-group mr-3')
+                                button#delRowBtn(type='button', class='btn btn-default') 선택삭제
+                                button#addRowBtn(type='button', class='btn btn-default ml-2') 입력 행 추가
+        thead(class='thead-color')
+            tr
+                th
+                    div(class="form-check d-inline ml-1")
+                        input(type='checkbox', class='form-check-input')
+                th 공통코드 아이디
+                th 공통코드 이름
+                th 공통상세번호
+                th 공통상세이름
+        tbody
+            //- tr
+            //-     th
+            //-         div(class="form-check d-inline")
+            //-             input(type='checkbox', class='form-check-input')
+            //-     th
+            //-     th
+            //-     th
+            //-     th
+
+    div(class='button-group d-inline')
+        button#code-regist(type='submit', class='btn btn-primary btn-lg align-center') 저장
+        button(type='button', class='btn btn-default btn-lg align-center ml-2') 초기화
+            
