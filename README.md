@@ -5,7 +5,7 @@
 
 # pug, bootstrap, jquery, datatables, ajax
 
-+ 템플릿 엔진은 pug를 사용하고
++ 템플릿 엔진은 pug를 사용
 + 스타일은 bootstrap으로 처리
 + 스크립트 부분은 jquery와 자바스크립트로 처리
 + 서버 api로부터 데이터를 받아와서 테이블을 생성해야 하는 부분은 datatables 이용
@@ -32,7 +32,7 @@ user/scripts
 routes/user.js
 
 + datatables에 서버사이드렌더링을 적용했기 때문에 서버쪽 라우팅을 해당 폴더의 user.js에서 담당
-+ 또한 user/sidebar.pug 에 걸려있는 링크를 use.js에서 라우팅을 담당
++ 또한 user/sidebar.pug 에 걸려있는 링크를 user.js에서 라우팅을 담당
   
 # Overview
 
