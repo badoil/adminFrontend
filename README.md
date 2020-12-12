@@ -1,7 +1,7 @@
 # 온라인 스토어 관리자 페이지 프론트엔드 pug 템플릿 작업
 
-스타트업 회사인 teameverywhere 의 외주를 받음
-온라인 쇼핑몰의 서버 api 와 동일한 프로젝트의 관리자 페이지 프론트엔드 구현
++ 스타트업 회사인 teameverywhere 의 외주를 받음
++ adminServerApi, storeServerApi와 동일한 프로젝트의 관리자 페이지 프론트엔드 구현
 
 # pug, bootstrap, jquery, datatables, ajax
 
