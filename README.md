@@ -36,4 +36,19 @@ routes/user.js
   
 # Overview
 
-어드민 페이지의 전체적인 모습은 다음과 
+어드민 페이지의 전체적인 모습은 다음과 같음
+
+bootstrap card 와 table로 구성한 모습
+<img width="1426" alt="adminPage1" src="https://user-images.githubusercontent.com/60473220/101978950-5a26f780-3c9c-11eb-95d6-830c260703ec.png">
+
+datatables
+<img width="1176" alt="adminPage2" src="https://user-images.githubusercontent.com/60473220/101978953-5b582480-3c9c-11eb-96c1-fa16e2c443a5.png">
+
+datatables의 회원코드를 누르면 모달창 팝업
+<img width="1173" alt="adminPage3" src="https://user-images.githubusercontent.com/60473220/101978955-5e531500-3c9c-11eb-80f2-7f562bcddfb6.png">
+
+코드를 조회한후 해당 코드를 첫번째 표에서 클릭하면, 상세정보가 두번째 테이블에 나옴 (scripts/comm_code_search_script 부분)
+<img width="1431" alt="adminPage4" src="https://user-images.githubusercontent.com/60473220/101978956-60b56f00-3c9c-11eb-93fe-783e9deae8e3.png">
+
+해당입력창에 입력해서 서버에 등록 (scripts/comm_code_register_script 부분)
+<img width="1430" alt="adminPage5" src="https://user-images.githubusercontent.com/60473220/101978959-63b05f80-3c9c-11eb-94fc-e78229007de8.png">
