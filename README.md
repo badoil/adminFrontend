@@ -29,4 +29,11 @@ user/scripts
 + scripts/comm_code_search_script 관리자의 검색 조건에 따라 ajax로 서버 데이터 호출하는 스크립트(자바스크립트)
   이때 받은 데이터를 DOM으로 테이블을 동적 생성
   
+routes/user.js
+
++ datatables에 서버사이드렌더링을 적용했기 때문에 서버쪽 라우팅을 해당 폴더의 user.js에서 담당
++ 또한 user/sidebar.pug 에 걸려있는 링크를 use.js에서 라우팅을 담당
+  
 # Overview
+
+어드민 페이지의 전체적인 모습은 다음과 
